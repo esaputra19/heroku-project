@@ -16,10 +16,11 @@ class AdminUserSeeder extends Seeder
     {
         User::create([
             'name' => 'admin',
-            'email' => 'admin@laracamp.com',
+            'email' => 'admin@codingercourse.com',
             'email_verified_at' => date('Y-m-d H:i:s', time()),
             'password' => \bcrypt('password'),
-            'is_admin' => true
-        ]);
+            'role' => 'admin',
+        ]
+    );
     }
 }

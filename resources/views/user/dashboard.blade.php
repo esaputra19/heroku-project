@@ -20,6 +20,7 @@
                 @include('components.alert')
                 <table class="table">
                     <tbody>
+
                         @forelse ($checkouts as $checkout)
                             <tr class="align-middle">
                                 <td width="18%">
@@ -66,21 +67,32 @@
                 </table>
                 <th></th>
                 <th></th>
-                <table class="table">
+                {{-- <table class="table"> --}}
                     @foreach ($checkouts as $tab)
                     <td>
                         @if ($tab->payment_status == 'paid')
-                        <a href="{{route('show')}}" class="btn btn-primary">
-                            Yukk Belajar !!
-                        </a>
-                        <a href="{{route('mentor')}}" class="btn btn-primary">Data Mentor</a>
-                        <a href="{{route('leaderboard.user')}}" class="btn btn-primary"> Leaderboard</a>
+                        <div class="card">
+                            <div class="card-header">
+                                User  Action
+                            </div>
+                            <div class="card-body">
+                                <a href="{{route('show')}}" class="btn btn-primary">
+                                    Yukk Belajar !!
+                                </a>
+                                {{-- <a href="{{route('user.decision')}}" class="btn btn-primary">Penentuan Project</a> --}}
+                                <a href="{{route('leaderboard.user')}}" class="btn btn-primary"> Leaderboard</a>
+                                <a href="{{route('mentor.show')}}" class="btn btn-primary"> Tracking Alumni</a>
+                                <a href="{{route('score.show')}}" class="btn btn-primary"> Score all student</a>
+                            </div>
+
+                        </div>
 
                         @endif
 
                     </td>
                     @endforeach
-                </table>
+                {{-- </table> --}}
+
             </div>
         </div>
     </section>

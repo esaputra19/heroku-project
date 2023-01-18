@@ -19,7 +19,10 @@ class DatabaseSeeder extends Seeder
             CampBenefitTableSeeder::class,
             AdminUserSeeder::class,
             LearningTableSeeder::class,
-            MentorSeeder::class,
+            // MentorSeeder::class,
+            // UserSeeder::class,
+            ScoreSeeder::class,
+            MentorUserSeeder::class,
         ]);
     }
 }

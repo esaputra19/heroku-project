@@ -15,14 +15,13 @@ class CreateMentorsTable extends Migration
     {
         Schema::create('mentors', function (Blueprint $table) {
             $table->id();
-            $table->string('nama_mentor');
+            $table->string('nama');
+            $table->string('email');
             $table->integer('umur');
-            $table->string('occupation');
-            $table->string('alumni');
-            $table->string('lastwork');
-            $table->string('job');
-            $table->string('linkedin');
-            $table->timestamps();
+            $table->integer('graduate');
+            $table->string('corporate');
+            $table->string('position');
+            // $table->string('passwd');
         });
     }
 

@@ -11,13 +11,14 @@ class Mentor extends Model
     use HasFactory;
 
     protected $fillable = [
-        'nama_mentor',
+        'nama',
+        'email',
         'umur',
-        'occupation',
-        'alumni',
-        'lastwork',
-        'job',
-        'linkedin',
+        'graduate',
+        'corporate',
+        'position',
+        // 'passwd',
+        'email_verified_at'
     ];
 
 

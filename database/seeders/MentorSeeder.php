@@ -4,7 +4,9 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use App\Models\Mentor;
+use GuzzleHttp\Promise\Create;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 
 class MentorSeeder extends Seeder
 {
@@ -15,24 +17,15 @@ class MentorSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('mentors')->insert([
-            'nama_mentor' => 'Ridwan Ardiansyah',
-            'umur' => 24,
-            'occupation' => 'Software Engineer',
-            'alumni' => 'Universitas Padjajaran',
-            'lastwork' => 'PT.Communter Line Indonesia',
-            'job' => 'Project Manager',
-            'linkedin' => 'https://www.linkedin.com/ridwan-ardiansyah'
-        ]);
+        Mentor::create([
+            'nama ' => ' Joni Silalahi',
+            'email ' => 'jony@codingerscourse.com',
+            'umur' => 21,
+            'nik ' =>321606020202001,
+            'telp ' =>'081221212112',
+            'addrs ' =>'Perumahan wonosari Blok A12',
+            'passwd ' =>'joni123',
 
-        DB::table('mentors')->insert([
-            'nama_mentor' => 'Deni Triyanto',
-            'umur' => 24,
-            'occupation' => 'Back-End Engineer',
-            'alumni' => 'Universitas Pasuruan',
-            'lastwork' => 'PT.Tokopedia Tbk.',
-            'job' => 'Scrum Master',
-            'linkedin' => 'https://www.linkedin.com/Deni-Triyanto'
         ]);
     }
 }

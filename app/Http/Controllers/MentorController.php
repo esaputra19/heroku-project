@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Mentor;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use phpDocumentor\Reflection\Types\This;
+use App\Models\User;
 
 class MentorController extends Controller
 {
@@ -12,10 +15,14 @@ class MentorController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function loginmentor(){
+        return view('admin.mentor.loginmentor');
+    }
+
     public function index()
     {
         $mentors = Mentor::all();
-        return view ('mentor.index', compact('mentors'));
+        return view ('admin.mentor.mentorindex', compact('mentors'));
     }
 
     /**
@@ -25,7 +32,7 @@ class MentorController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.mentor.mentorcreate');
     }
 
     /**
@@ -36,7 +43,17 @@ class MentorController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+        DB::table('mentors')->insert([
+            'nama' => $request->nama,
+            'email' => $request->email,
+            'umur' => $request->umur,
+            'graduate' => $request->graduate,
+            'corporate' => $request->corporate,
+            'position' => $request->position,
+
+        ]);
+        return redirect()->route('mentorindex')->with('success','Data berhasil diupdate');
     }
 
     /**
@@ -47,7 +64,8 @@ class MentorController extends Controller
      */
     public function show(Mentor $mentor)
     {
-        //
+        $mentors = Mentor::all();
+        return view('user.alumni', compact('mentors'));
     }
 
     /**
@@ -56,9 +74,10 @@ class MentorController extends Controller
      * @param  \App\Models\Mentor  $mentor
      * @return \Illuminate\Http\Response
      */
-    public function edit(Mentor $mentor)
+    public function edit(Mentor $mentors)
     {
-        //
+        $mentors = Mentor::all();
+        return view('admin.mentor.mentoredit');
     }
 
     /**
@@ -68,9 +87,27 @@ class MentorController extends Controller
      * @param  \App\Models\Mentor  $mentor
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Mentor $mentor)
+    public function update(Request $request, Mentor $mentors)
     {
-        //
+        // $mentors->update($request->all());
+        // $mentors = Mentor::all();
+    $mentors = Mentor::findOrFail($mentors->id);
+       $mentors->validate([
+            'nama' => 'required',
+            'email' => 'required',
+        ]);
+
+        $mentors->update([
+        'nama' => $request->nama,
+        'email' => $request->email,
+        'umur' => $request->umur,
+        'graduate' => $request->graduate,
+        'corporation' => $request->corporation,
+        'position' => $request->position,]);
+        // $mentors->update($request->all());
+        // $mentors = Mentor::find($id)->update($request->all());
+
+        return redirect()->route('mentorindex')->with('success','Data berhasil diupdate');
     }
 
     /**
@@ -79,8 +116,16 @@ class MentorController extends Controller
      * @param  \App\Models\Mentor  $mentor
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Mentor $mentor)
+    public function destroy($id)
     {
-        //
+        $mentor = Mentor::findOrFail($id);
+        //Storage::disk('local')->delete('public/data_file/'.$leaderboards->image);
+        $mentor ->delete();
+        return redirect()->route('mentorindex')->with('success','Data berhasil diupdate');
+    }
+
+    public function inputnilai()
+    {
+        // return view('inputnilai');
     }
 }

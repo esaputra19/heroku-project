@@ -47,7 +47,7 @@
                     </div>
                     <div class="card-body">
                        {{-- <a href="{{route('jadwal')}}" class="btn btn-master btn-primary ">Jadwal</a> --}}
-                       <a href="#" class="btn btn-master btn-primary ">Penjadwalan</a>
+                       <a href="{{route('mentorindex')}}" class="btn btn-master btn-primary ">Data Alumni</a>
                        <a href="{{route('learning')}}" class="btn btn-master btn-primary ">Pelajaran</a>
                        <a href="{{route('leaderboard.index')}}" class="btn btn-master btn-primary ">Leaderboard</a>
                     </div>

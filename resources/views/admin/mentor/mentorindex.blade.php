@@ -8,28 +8,33 @@
             <div class="col-md-12">
                 <div class="card border-0 shadow rounded">
                     <div class="card-body">
-                        <a href="{{ route('create')}}" class="btn btn-md btn-success mb-3">TAMBAH DATA</a>
-                        <h4>TOP GAINERS</h4>
+                        <a href="{{ route('mentorcreate')}}" class="btn btn-md btn-success mb-3">TAMBAH DATA</a>
+                        <h4>Almuni Codingers Course</h4>
                         <table class="table table-bordered">
                             <thead>
                               <tr>
                                 <th scope="col">Nama</th>
                                 <th scope="col">Email</th>
-                                <th scope="col">Pembimbing</th>
-                                <th scope="col">Occupation</th>
+                                <th scope="col">Umur</th>
+                                <th scope="col">Tahun Lulus</th>
+                                <th scope="col">Perusahaan</th>
+                                <th scope="col">Posisi</th>
+                                <th scope="col">Action</th>
+                                {{-- <th scope="col">Password</th> --}}
                               </tr>
                             </thead>
                             <tbody>
-                              @forelse ($leaderboards as $leader => $key)
+                              @forelse ($mentors as $mentor => $pelatih)
                                 <tr>
-                                    <td>{{$key->nama}}</td>
-                                    <td>{{$key->email}}</td>
-                                    <td>{{$key->pembimbing}}</td>
-                                    <td>{{$key->occupation}}</td>
+                                    <td>{{$pelatih->nama}}</td>
+                                    <td>{{$pelatih->email}}</td>
+                                    <td>{{$pelatih->umur}}</td>
+                                    <td>{{$pelatih->graduate}}</td>
+                                    <td>{{$pelatih->corporate}}</td>
+                                    <td>{{$pelatih->position}}</td>
+                                    {{-- <td>{{$pelatih->passwd}}</td> --}}
                                     <td class="text-center">
-                                        <form method="GET" onsubmit="return confirm('Apakah Anda Yakin ?');" action="{{ route('destroy', $key->id) }}" method="GET">
-                                            <a href="{{ route('leaderboard.edit', $key->id) }}" class="btn btn-sm btn-primary">EDIT</a>
-                                            @csrf
+                                        <form method="GET" onsubmit="return confirm('Apakah Anda Yakin ?');" action="{{ route('mentordestroy', $pelatih->id) }}" method="GET">
                                             <button type="submit" class="btn btn-sm btn-danger">HAPUS</button>
                                         </form>
                                     </td>

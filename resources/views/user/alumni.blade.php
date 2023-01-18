@@ -8,24 +8,28 @@
             <div class="col-md-12">
                 <div class="card border-0 shadow rounded">
                     <div class="card-body">
-                        <h4>Top Gainer Leaderboard</h4>
+                        <h4>Data alumni yang bekerja saat ini</h4>
                         <table class="table table-bordered">
                             <thead>
-                              <tr>
-                                <th scope="col">Nama Siswa</th>
-                                <th scope="col">Email</th>
-                                <th scope="col">Pembimbing</th>
-                                <th scope="col">Occupation</th>
-
-                              </tr>
-                            </thead>
-                            <tbody>
-                                @forelse ($leaderboards as $key)
                                 <tr>
-                                    <td>{{$key->nama}}</td>
-                                    <td>{{$key->email}}</td>
-                                    <td>{{$key->pembimbing}}</td>
-                                    <td>{{$key->occupation}}</td>
+                                  <th scope="col">Nama</th>
+                                  <th scope="col">Email</th>
+                                  <th scope="col">Umur</th>
+                                  <th scope="col">Tahun Lulus</th>
+                                  <th scope="col">Perusahaan</th>
+                                  <th scope="col">Posisi</th>
+                                  {{-- <th scope="col">Password</th> --}}
+                                </tr>
+                              </thead>
+                            <tbody>
+                                @forelse ($mentors as $pelatih)
+                                <tr>
+                                    <<td>{{$pelatih->nama}}</td>
+                                    <td>{{$pelatih->email}}</td>
+                                    <td>{{$pelatih->umur}}</td>
+                                    <td>{{$pelatih->graduate}}</td>
+                                    <td>{{$pelatih->corporate}}</td>
+                                    <td>{{$pelatih->position}}</td>
                                 </tr>
                                 @empty
 
